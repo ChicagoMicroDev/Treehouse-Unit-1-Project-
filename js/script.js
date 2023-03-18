@@ -60,22 +60,22 @@ function getRandomQuote(){
 ***/
 function printQuote(){
   const randomQuote = getRandomQuote();
-  const phtml = `<p class="quote"> </p>"`+ `<p class="source">`;
-    if(randomQuote === "citation")
+  
+  const html = `<p class="quote">${randomQuote.quote}</p>`+ `<p class="source">${randomQuote.source}`;
+    if(randomQuote == "citation" || randomQuote == "year")
     {
-      phtml.concat(`<span class="citation"> </span> `)
+      html.concat(`<span class="citation"> </span>`)
+      html.concat(`<span class="year"> </span>`)
+      
     }
-    if(randomQuote === "year")
-    {
-      phtml.concat(`<span class="year"> </span>`)
-    }
-    phtml.concat("</p>")
+    html.concat("</p>")
+    console.log(html)
+    randomQuote.innerHTML = html;
     
-    printQuote().innerHTML = phtml
-    document.getElementById('quote-box').innerHTML = phtml; 
+    document.getElementById('quote-box').innerHTML = html; 
+
 }
-
-
+printQuote()
 
 
 /***
