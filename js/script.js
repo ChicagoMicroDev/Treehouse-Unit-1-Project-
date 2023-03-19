@@ -51,8 +51,6 @@ let quotes = [
       tags: "Humor"
     },
 ];
-
-
 /***
  * `getRandomQuote` function
 ***/
@@ -61,9 +59,6 @@ function getRandomQuote(){
   const randomnum = Math.floor(Math.random() * quotes.length)
   return quotes[randomnum]
 }
-
-
-
 /***
  * `printQuote` function
 ***/
@@ -75,13 +70,9 @@ function printQuote(){
       html += "</p>"
       const randomColor = Math.floor(Math.random()*16777215).toString(16);
       document.body.style.backgroundColor = "#" + randomColor;
-document.getElementById('quote-box').innerHTML = html; 
+  document.getElementById('quote-box').innerHTML = html; 
 }
 
-function changeBackgroundColor() {
-  printQuote()
-  
-}
 
 setInterval(printQuote, 10000);
 
