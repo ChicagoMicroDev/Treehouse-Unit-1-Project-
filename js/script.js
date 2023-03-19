@@ -10,36 +10,45 @@ project 1 - A Random Quote Generator
 /*** 
  * `quotes` array 
 ***/
+//Improvement to this code could include some sort of api call to provide random quotes of the day by various authors, If api call is unavailble we could use the quotes object array as a fallback.
+const randomValue = () => Math.floor(Math.random() * 256);
+let html = '';
+
 let quotes = [
     {
       quote:"May the Force be with you.",
       source:"Star Wars",
       citation:"Jan Dodonna",
       year:"1977",
+      tags: "Inspirational"
     },
     {
       quote:"There's no place like home.",
       source:"The Wizard of Oz",
       citation:"Dorothy",
       year:"1939",
+      tags: "Motivation"
     },
     {
       quote:"I'm the king of the world!",
       source:"Titanic",
       citation:"Jack Dawson",
       year:"1997",
+      tags: "Inspirational"
     },
     {
       quote:"My mama always said life was like a box of chocolates. You never know what you're gonna get.",
       source:"Forrest Gump",
       citation:"Forrest Gump",
       year:"1994",
+      tags: "Humor"
     },
     {
       quote:"You're gonna need a bigger boat.",
       source:"Jaws",
       citation:"Roy Scheider",
       year:"1975",
+      tags: "Humor"
     },
 ];
 
@@ -60,22 +69,21 @@ function getRandomQuote(){
 ***/
 function printQuote(){
   const randomQuote = getRandomQuote();
-  
-  const html = `<p class="quote">${randomQuote.quote}</p>`+ `<p class="source">${randomQuote.source}`;
-    if(randomQuote == "citation" || randomQuote == "year")
-    {
-      html.concat(`<span class="citation"> </span>`)
-      html.concat(`<span class="year"> </span>`)
-      
-    }
-    html.concat("</p>")
-    console.log(html)
-    randomQuote.innerHTML = html;
-    
-    document.getElementById('quote-box').innerHTML = html; 
-
+  let html = `<p class="quote">${randomQuote.quote}</p>`+" "+`<p class="source"> ${randomQuote.source} `;
+  // In the instruction both if statement would evaluate to true, so in keeping with the DRY principle I reduce the if statement to one line instead of two using Trenary Xpression
+    (randomQuote.citation && randomQuote.year && randomQuote.tags) ? html += `<span class="citation"> ${randomQuote.citation}</span>` + `<span class="year"> ${randomQuote.year}</span>` + `<span class="tags">${randomQuote.tags}</span>`:
+      html += "</p>"
+      const randomColor = Math.floor(Math.random()*16777215).toString(16);
+      document.body.style.backgroundColor = "#" + randomColor;
+document.getElementById('quote-box').innerHTML = html; 
 }
-printQuote()
+
+function changeBackgroundColor() {
+  printQuote()
+  
+}
+
+setInterval(printQuote, 10000);
 
 
 /***
