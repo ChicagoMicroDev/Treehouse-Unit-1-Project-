@@ -11,9 +11,6 @@ project 1 - A Random Quote Generator
  * `quotes` array 
 ***/
 //Improvement to this code could include some sort of api call to provide random quotes of the day by various authors, If api call is unavailble we could use the quotes object array as a fallback.
-const randomValue = () => Math.floor(Math.random() * 256);
-let html = '';
-
 let quotes = [
     {
       quote:"May the Force be with you.",
