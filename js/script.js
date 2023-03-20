@@ -65,20 +65,19 @@ function getRandomQuote(){
 function printQuote(){
   const randomQuote = getRandomQuote();
   let html = `<p class="quote">${randomQuote.quote}</p>`+" "+`<p class="source"> ${randomQuote.source} `;
-  // In the instruction both if statement would evaluate to true, so in keeping with the DRY principle I reduce the if statement to one line instead of two using Ternary Expression
-  if(randomQuote.citation){
-    html += `<span class="citation"> ${randomQuote.citation}</span>`
-  }
-  if(randomQuote.year){
-    html +=  `<span class="year"> ${randomQuote.year}</span>`
-  }
-  if(randomQuote.tags){
-    html += `<span class="tags"> ${randomQuote.tags}</span>`
-  }
+    if(randomQuote.citation){
+      html += `<span class="citation"> ${randomQuote.citation}</span>`
+    }
+    if(randomQuote.year){
+      html +=  `<span class="year"> ${randomQuote.year}</span>`
+    }
+    if(randomQuote.tags){
+      html += `<span class="tags"> ${randomQuote.tags}</span>`
+    }
   
-      html += "</p>"
-      const randomColor = Math.floor(Math.random()*16777215).toString(16);
-      document.body.style.backgroundColor = "#" + randomColor;
+  html += "</p>"
+  const randomColor = Math.floor(Math.random()*16777215).toString(16);
+  document.body.style.backgroundColor = "#" + randomColor;
   document.getElementById('quote-box').innerHTML = html; 
 }
 
